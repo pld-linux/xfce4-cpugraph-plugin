@@ -2,7 +2,7 @@ Summary:	Displays a graph from your latest system load
 Summary(pl):	Wy¶wietlanie wykresu bie¿±cego obci±¿enia systemu
 Name:		xfce4-cpugraph-plugin
 Version:	0.2.2
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/xfce-goodies/%{name}-%{version}.tar.gz

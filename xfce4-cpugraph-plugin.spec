@@ -2,12 +2,13 @@ Summary:	Displays a graph from your latest system load
 Summary(pl):	Wy¶wietlanie wykresu bie¿±cego obci±¿enia systemu
 Name:		xfce4-cpugraph-plugin
 Version:	0.2.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.berlios.de/xfce-goodies/%{name}-%{version}.tar.gz
 # Source0-md5:	bde4c578ef469aade3f6b58a9bde8ec6
 URL:		http://xfce-goodies.berlios.de/
+BuildRequires:	automake
 BuildRequires:	pkgconfig
 BuildRequires:	xfce4-panel-devel >= 4.0.0
 Requires:	xfce4-panel >= 4.0.0
@@ -27,6 +28,7 @@ obci±¿enia procesora. Kolory i rozmiar wtyczki s± modyfikowalne.
 %setup -q -n %{name}
 
 %build
+cp -f /usr/share/automake/config.* .
 %configure \
 	--disable-static
 

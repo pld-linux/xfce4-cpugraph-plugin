@@ -1,6 +1,5 @@
-# $Revision $, $Date $
 Summary:	Displays a graph from your latest system load
-Summary(pl):	Wy¶wietla wykres bie¿±cego obci±¿enia systemu
+Summary(pl):	Wy¶wietlanie wykresu bie¿±cego obci±¿enia systemu
 Name:		xfce4-cpugraph-plugin
 Version:	0.2.2
 Release:	1

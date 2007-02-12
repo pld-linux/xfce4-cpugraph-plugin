@@ -1,5 +1,5 @@
 Summary:	Displays a graph from your latest system load
-Summary(pl.UTF-8):   Wyświetlanie wykresu bieżącego obciążenia systemu
+Summary(pl.UTF-8):	Wyświetlanie wykresu bieżącego obciążenia systemu
 Name:		xfce4-cpugraph-plugin
 Version:	0.3.0
 Release:	1

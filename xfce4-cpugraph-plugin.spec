@@ -1,5 +1,5 @@
 Summary:	Displays a graph from your latest system load
-Summary(pl):	Wy¶wietlanie wykresu bie¿±cego obci±¿enia systemu
+Summary(pl.UTF-8):   WyÅ›wietlanie wykresu bieÅ¼Ä…cego obciÄ…Å¼enia systemu
 Name:		xfce4-cpugraph-plugin
 Version:	0.3.0
 Release:	1
@@ -21,10 +21,10 @@ This systemload plugin offers multiple display modes (LED, gradient,
 fire, etc.) to show the current CPU load of the system. The colors and
 the size of the plugin are customizable.
 
-%description -l pl
-Ta wtyczka obci±¿enia systemu oferuje liczne tryby wy¶wietlania (ekran
-ciek³okrystaliczny LED, gradient, ogieñ, itp.) aktualnego obci±¿enia
-procesora. Kolory i rozmiar wtyczki s± modyfikowalne.
+%description -l pl.UTF-8
+Ta wtyczka obciÄ…Å¼enia systemu oferuje liczne tryby wyÅ›wietlania (ekran
+ciekÅ‚okrystaliczny LED, gradient, ogieÅ„, itp.) aktualnego obciÄ…Å¼enia
+procesora. Kolory i rozmiar wtyczki sÄ… modyfikowalne.
 
 %prep
 %setup -q

@@ -1,0 +1,19 @@
+diff -urN xfce4-cpugraph-plugin-0.4.0/configure.ac xfce4-cpugraph-plugin-0.4.0.new/configure.ac
+--- xfce4-cpugraph-plugin-0.4.0/configure.ac	2007-11-22 06:42:28.000000000 +0100
++++ xfce4-cpugraph-plugin-0.4.0.new/configure.ac	2007-12-08 19:15:27.000000000 +0100
+@@ -33,7 +33,7 @@
+ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.20])
+ 
+ dnl translations
+-XDT_I18N([be ca cs en_GB eu fr hu nb_NO pl pt_PT sq uk])
++XDT_I18N([be ca cs en_GB eu fr hu nb pl pt sq uk])
+ 
+ dnl Check for debugging support
+ XDT_FEATURE_DEBUG()
+diff -urN xfce4-cpugraph-plugin-0.4.0/po/LINGUAS xfce4-cpugraph-plugin-0.4.0.new/po/LINGUAS
+--- xfce4-cpugraph-plugin-0.4.0/po/LINGUAS	2007-11-21 18:07:32.000000000 +0100
++++ xfce4-cpugraph-plugin-0.4.0.new/po/LINGUAS	2007-12-08 19:15:13.000000000 +0100
+@@ -1,2 +1,2 @@
+ # set of available languages (in alphabetic order)
+-be ca cs en_GB eu fr hu lv nb_NO pl pt_BR pt_PT sq uk ur
++be ca cs en_GB eu fr hu lv nb pl pt_BR pt sq uk ur

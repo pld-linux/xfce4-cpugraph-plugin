@@ -1,18 +1,22 @@
 Summary:	Displays a graph from your latest system load
 Summary(pl.UTF-8):	Wyświetlanie wykresu bieżącego obciążenia systemu
 Name:		xfce4-cpugraph-plugin
-Version:	1.0.0
-Release:	3
+Version:	1.0.1
+Release:	1
 License:	BSD
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.0//%{name}-%{version}.tar.bz2
-# Source0-md5:	ba08c72b0fe52784d97d0a8d15516e84
+Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	ff551087b1f61c47b8746e8687c572aa
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
 BuildRequires:	gettext-devel
+BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	xfce4-dev-tools >= 4.6.0
 BuildRequires:	xfce4-panel-devel >= 4.6.0
+Requires:	gtk-update-icon-cache
+Requires:	hicolor-icon-theme
 Requires:	xfce4-panel >= 4.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,9 +34,7 @@ procesora. Kolory i rozmiar wtyczki są modyfikowalne.
 %setup -q
 
 %build
-%configure \
-	--disable-static
-
+%configure
 %{__make}
 
 %install
@@ -41,15 +43,22 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
 
 %find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%updata_icon_cache hicolor
+
+%postun
+%update_icon_cache hicolor
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/xfce4/panel-plugins/xfce4-cpugraph-plugin
 %{_datadir}/xfce4/panel-plugins/cpugraph.desktop
+%{_iconsdir}/hicolor/*/*/*.png

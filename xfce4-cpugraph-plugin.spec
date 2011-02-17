@@ -2,7 +2,7 @@ Summary:	Displays a graph from your latest system load
 Summary(pl.UTF-8):	Wyświetlanie wykresu bieżącego obciążenia systemu
 Name:		xfce4-cpugraph-plugin
 Version:	1.0.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.0/%{name}-%{version}.tar.bz2
@@ -51,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%updata_icon_cache hicolor
+%update_icon_cache hicolor
 
 %postun
 %update_icon_cache hicolor

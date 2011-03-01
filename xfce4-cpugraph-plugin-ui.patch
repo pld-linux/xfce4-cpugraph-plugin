@@ -1,0 +1,130 @@
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/configure.ac xfce4-cpugraph-plugin-1.0.1/configure.ac
+--- xfce4-cpugraph-plugin-1.0.1-orig/configure.ac	2010-12-05 16:25:54.000000000 +0100
++++ xfce4-cpugraph-plugin-1.0.1/configure.ac	2011-03-01 12:39:54.617889238 +0100
+@@ -32,7 +32,7 @@
+ AC_HEADER_STDC
+ 
+ dnl configure the panel plugin
+-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.20])
++XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.8.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.20])
+ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.12.0])
+ 
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/cpu.c xfce4-cpugraph-plugin-1.0.1/panel-plugin/cpu.c
+--- xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/cpu.c	2010-09-30 11:53:22.000000000 +0200
++++ xfce4-cpugraph-plugin-1.0.1/panel-plugin/cpu.c	2011-03-01 12:42:50.597889237 +0100
+@@ -21,18 +21,18 @@
+  *  with this program; if not, write to the Free Software Foundation, Inc.,
+  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+-#include "cpu.h"
+-#include "settings.h"
+-#include "mode.h"
+-#include "properties.h"
+-
+-#include <libxfcegui4/libxfcegui4.h>
+-#include <libxfce4panel/xfce-hvbox.h>
++#include <libxfce4ui/libxfce4ui.h>
++#include <libxfce4panel/libxfce4panel.h>
+ #ifndef _
+ # include <libintl.h>
+ # define _(String) gettext (String)
+ #endif
+ 
++#include "cpu.h"
++#include "settings.h"
++#include "mode.h"
++#include "properties.h"
++
+ static void cpugraph_construct( XfcePanelPlugin *plugin );
+ static CPUGraph *create_gui( XfcePanelPlugin *plugin );
+ static void create_bars( CPUGraph *base );
+@@ -344,7 +344,7 @@
+ {
+ 	if( event->button == 1 && base->command )
+ 	{
+-		xfce_exec( base->command, base->in_terminal, base->startup_notification, NULL );
++		xfce_spawn_command_line_on_screen(gdk_screen_get_default(),  base->command, base->in_terminal, base->startup_notification, NULL );
+ 	}
+ 	return FALSE;
+ }
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/cpu.h xfce4-cpugraph-plugin-1.0.1/panel-plugin/cpu.h
+--- xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/cpu.h	2010-09-30 11:53:22.000000000 +0200
++++ xfce4-cpugraph-plugin-1.0.1/panel-plugin/cpu.h	2011-03-01 12:39:54.619889238 +0100
+@@ -28,7 +28,7 @@
+ #include "config.h"
+ #endif
+ 
+-#include <libxfce4panel/xfce-panel-plugin.h>
++#include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "os.h"
+ 
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/Makefile.am xfce4-cpugraph-plugin-1.0.1/panel-plugin/Makefile.am
+--- xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/Makefile.am	2010-07-30 02:53:53.000000000 +0200
++++ xfce4-cpugraph-plugin-1.0.1/panel-plugin/Makefile.am	2011-03-01 12:39:54.621889238 +0100
+@@ -3,11 +3,11 @@
+ 
+ xfce4_cpugraph_plugin_CFLAGS =					\
+ 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"			\
+-	@LIBXFCEGUI4_CFLAGS@					\
++	@LIBXFCE4UI_CFLAGS@					\
+ 	@LIBXFCE4PANEL_CFLAGS@
+ 
+ xfce4_cpugraph_plugin_LDADD =					\
+-	@LIBXFCEGUI4_LIBS@					\
++	@LIBXFCE4UI_LIBS@					\
+ 	@LIBXFCE4PANEL_LIBS@
+ 
+ xfce4_cpugraph_plugin_SOURCES =                                 \
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/mode.c xfce4-cpugraph-plugin-1.0.1/panel-plugin/mode.c
+--- xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/mode.c	2010-09-30 11:53:22.000000000 +0200
++++ xfce4-cpugraph-plugin-1.0.1/panel-plugin/mode.c	2011-03-01 12:41:32.348889240 +0100
+@@ -22,6 +22,7 @@
+  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ 
++#include <libxfce4ui/libxfce4ui.h>
+ #include "mode.h"
+ 
+ static guint16 _lerp( gdouble t, guint16 a, guint16 b )
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/properties.c xfce4-cpugraph-plugin-1.0.1/panel-plugin/properties.c
+--- xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/properties.c	2010-10-10 05:49:41.000000000 +0200
++++ xfce4-cpugraph-plugin-1.0.1/panel-plugin/properties.c	2011-03-01 12:42:10.764889238 +0100
+@@ -21,18 +21,18 @@
+  *  with this program; if not, write to the Free Software Foundation, Inc.,
+  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+-#include "cpu.h"
+-#include "properties.h"
+-#include "settings.h"
+-
+ #include <glib/gprintf.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ 
+ #ifndef _
+ # include <libintl.h>
+ # define _(String) gettext (String)
+ #endif
+ 
++#include "cpu.h"
++#include "properties.h"
++#include "settings.h"
++
+ static GtkBox *create_tab();
+ static GtkBox *create_option_line( GtkBox *tab, GtkSizeGroup *sg, const gchar *name );
+ static void create_check_box( GtkBox *tab, GtkSizeGroup *sg, const gchar *name, gboolean init, void (callback)( GtkToggleButton *, CPUGraph *), void *cb_data );
+diff -ur xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/settings.c xfce4-cpugraph-plugin-1.0.1/panel-plugin/settings.c
+--- xfce4-cpugraph-plugin-1.0.1-orig/panel-plugin/settings.c	2010-09-30 11:53:22.000000000 +0200
++++ xfce4-cpugraph-plugin-1.0.1/panel-plugin/settings.c	2011-03-01 12:42:17.648889237 +0100
+@@ -21,8 +21,8 @@
+  *  with this program; if not, write to the Free Software Foundation, Inc.,
+  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
++#include <libxfce4ui/libxfce4ui.h>
+ #include "settings.h"
+-#include <libxfcegui4/libxfcegui4.h>
+ 
+ static void default_command( const gchar ** command, gboolean * in_terminal, gboolean * startup_notification )
+ {

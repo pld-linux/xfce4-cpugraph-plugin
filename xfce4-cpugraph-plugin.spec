@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	f0ebfabb273adf69361b37a3fa4b7912
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	libxfce4ui-devel
 BuildRequires:	pkgconfig

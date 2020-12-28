@@ -1,15 +1,15 @@
 Summary:	Displays a graph from your latest system load
 Summary(pl.UTF-8):	Wyświetlanie wykresu bieżącego obciążenia systemu
 Name:		xfce4-cpugraph-plugin
-Version:	1.1.0
+Version:	1.2.0
 Release:	1
 License:	BSD
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	48ead9dcc019212795637c170d9e2ca2
+Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	3c6dd0b62acf9aa44f8d54018334c3eb
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
 BuildRequires:	gettext-tools
-BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	libxfce4ui-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
@@ -47,8 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 chmod 755 $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.so
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/*.la
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ie
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hye,ie,ur_PK}
 
 %find_lang %{name}
 

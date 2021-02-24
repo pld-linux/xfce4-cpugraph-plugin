@@ -34,13 +34,11 @@ procesora. Kolory i rozmiar wtyczki są modyfikowalne.
 %setup -q
 
 %build
-export LINGUAS="ar ast be bg ca cs da de el en_AU en_GB es et eu fi fr gl he hr hu hy_AM hye id ie is it ja kk ko lt lv ms nb nl oc pa pl pt_BR pt ro ru sk sl sq sr sv th tr ug uk ur_PK ur vi zh_CN zh_TW"
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-export LINGUAS="ar ast be bg ca cs da de el en_AU en_GB es et eu fi fr gl he hr hu hy_AM hye id ie is it ja kk ko lt lv ms nb nl oc pa pl pt_BR pt ro ru sk sl sq sr sv th tr ug uk ur_PK ur vi zh_CN zh_TW"
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 

@@ -1,12 +1,12 @@
 Summary:	Displays a graph from your latest system load
 Summary(pl.UTF-8):	Wyświetlanie wykresu bieżącego obciążenia systemu
 Name:		xfce4-cpugraph-plugin
-Version:	1.2.2
+Version:	1.2.3
 Release:	1
 License:	BSD
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	0ca752150f589c30ece155fb17243cfb
+# Source0-md5:	ebfbce336861094eadfb4df931dcd8fc
 URL:		http://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
 BuildRequires:	gettext-tools
 BuildRequires:	gtk+3-devel >= 3.22
@@ -34,12 +34,13 @@ procesora. Kolory i rozmiar wtyczki są modyfikowalne.
 %setup -q
 
 %build
+export LINGUAS="ar ast be bg ca cs da de el en_AU en_GB es et eu fi fr gl he hr hu hy_AM hye id ie is it ja kk ko lt lv ms nb nl oc pa pl pt_BR pt ro ru sk sl sq sr sv th tr ug uk ur_PK ur vi zh_CN zh_TW"
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
+export LINGUAS="ar ast be bg ca cs da de el en_AU en_GB es et eu fi fr gl he hr hu hy_AM hye id ie is it ja kk ko lt lv ms nb nl oc pa pl pt_BR pt ro ru sk sl sq sr sv th tr ug uk ur_PK ur vi zh_CN zh_TW"
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 

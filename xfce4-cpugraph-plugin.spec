@@ -1,23 +1,23 @@
 Summary:	Displays a graph from your latest system load
 Summary(pl.UTF-8):	Wyświetlanie wykresu bieżącego obciążenia systemu
 Name:		xfce4-cpugraph-plugin
-Version:	1.2.10
+Version:	1.2.11
 Release:	1
 License:	BSD
 Group:		X11/Applications
 Source0:	https://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	fd5eed8f93d2f1a01fbe34c5f390b670
+# Source0-md5:	2af2f2816f4d7a3b871e46141992a026
 URL:		https://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50.0
-BuildRequires:	gtk+3-devel >= 3.22
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	libxfce4ui-devel >= 4.16
 BuildRequires:	libxfce4util-devel >= 4.17.2
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 2.000
 BuildRequires:	xfce4-dev-tools >= 4.16.0
 BuildRequires:	xfce4-panel-devel >= 4.16.0
-BuildRequires:	xfconf-devel >= 4.12.0
+BuildRequires:	xfconf-devel >= 4.16.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	xfce4-panel >= 4.16.0
